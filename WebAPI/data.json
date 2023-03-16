@@ -1,0 +1,124 @@
+{
+  "Users": [
+    {
+      "Id": 1,
+      "UserName": "haloBro"
+    },
+    {
+      "Id": 2,
+      "UserName": "tina"
+    },
+    {
+      "Id": 3,
+      "UserName": "papp"
+    },
+    {
+      "Id": 4,
+      "UserName": "gabi"
+    },
+    {
+      "Id": 5,
+      "UserName": "gabika"
+    },
+    {
+      "Id": 6,
+      "UserName": "kevo"
+    },
+    {
+      "Id": 7,
+      "UserName": "kevin"
+    }
+  ],
+  "Todos": [
+    {
+      "Id": 3,
+      "Owner": {
+        "Id": 1,
+        "UserName": "haloBro"
+      },
+      "Title": "task2",
+      "IsCompleted": false
+    },
+    {
+      "Id": 4,
+      "Owner": {
+        "Id": 1,
+        "UserName": "haloBro"
+      },
+      "Title": "task3",
+      "IsCompleted": false
+    },
+    {
+      "Id": 5,
+      "Owner": {
+        "Id": 1,
+        "UserName": "haloBro"
+      },
+      "Title": "task4",
+      "IsCompleted": false
+    },
+    {
+      "Id": 6,
+      "Owner": {
+        "Id": 3,
+        "UserName": "papp"
+      },
+      "Title": "task4",
+      "IsCompleted": true
+    },
+    {
+      "Id": 7,
+      "Owner": {
+        "Id": 3,
+        "UserName": "papp"
+      },
+      "Title": "task43",
+      "IsCompleted": false
+    },
+    {
+      "Id": 8,
+      "Owner": {
+        "Id": 3,
+        "UserName": "papp"
+      },
+      "Title": "task433",
+      "IsCompleted": false
+    },
+    {
+      "Id": 9,
+      "Owner": {
+        "Id": 2,
+        "UserName": "tina"
+      },
+      "Title": "task",
+      "IsCompleted": false
+    },
+    {
+      "Id": 10,
+      "Owner": {
+        "Id": 2,
+        "UserName": "tina"
+      },
+      "Title": "task",
+      "IsCompleted": false
+    },
+    {
+      "Id": 2,
+      "Owner": {
+        "Id": 1,
+        "UserName": "haloBro"
+      },
+      "Title": "task1",
+      "IsCompleted": false
+    },
+    {
+      "Id": 11,
+      "Owner": {
+        "Id": 5,
+        "UserName": "gabika"
+      },
+      "Title": "gabika\u0027s task",
+      "IsCompleted": true
+    }
+  ]
+}
