@@ -1,5 +1,5 @@
 # ToDoApp
-Basic Todo App (.NET)
+Basic Todo App done in .NET
 
 Basic Todo Logic implemented based on the below user stories:
 
@@ -15,4 +15,8 @@ As a User I can complete a Todo, so that I can mark things as done
 
 As a User I can delete a Todo, so that I can clean up
 
-Version 1 - Web API
+
+
+Version 1 - Logic classes and Web API 
+Version 2 (branch 02_ClientSetup) - Blazor Project set up + Create User Page
+
