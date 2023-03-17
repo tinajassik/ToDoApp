@@ -139,6 +139,15 @@
       },
       "Title": "gabika\u0027s task",
       "IsCompleted": true
+    },
+    {
+      "Id": 12,
+      "Owner": {
+        "Id": 5,
+        "UserName": "gabika"
+      },
+      "Title": "New Task Blazor Test",
+      "IsCompleted": false
     }
   ]
 }
