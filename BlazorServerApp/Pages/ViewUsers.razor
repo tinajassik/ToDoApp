@@ -1,0 +1,37 @@
+﻿@page "/ViewUsers"
+@using Domain.Models
+@using HttpClients.ClientInterfaces
+@inject IUserService userService
+
+<h3 style="text-align: center">Overview of all users :)</h3>
+
+@if (!string.IsNullOrEmpty(msg))
+{
+    <div>
+        <span>@msg</span>
+    </div>
+}
+
+@if (users == null)
+{
+    <div>
+        <span>Loading...</span>
+    </div>
+}
+
+else if (!users.Any()) {
+    <span>I am sorry, there are no users. :(</span>
+}
+else
+{
+    <div class="users-container">
+        @foreach (User user in users)
+        {
+            <div class="user-card">
+                <label>@user.UserName</label>
+            </div>
+        }
+    </div>
+    
+}
+
