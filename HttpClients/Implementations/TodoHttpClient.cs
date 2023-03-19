@@ -1,4 +1,5 @@
 ﻿using System.Net.Http.Json;
+using System.Text;
 using System.Text.Json;
 using Domain.DTOs;
 using Domain.Models;
@@ -51,8 +52,21 @@ public class TodoHttpClient : ITodoService
         
         return todos; 
     }
-    
-    
+
+    public async Task UpdateAsync(TodoUpdateDTO dto)
+    {
+        string dtoAsJson = JsonSerializer.Serialize(dto);
+        StringContent body = new StringContent(dtoAsJson, Encoding.UTF8, "application/json");
+
+        HttpResponseMessage response = await client.PatchAsync("/todos", body);
+        if (!response.IsSuccessStatusCode)
+        {
+            string content = await response.Content.ReadAsStringAsync();
+            throw new Exception(content);
+        }
+    }
+
+
     // checks each filter argument
     // checks if null --> in which case they should be ignored.
     // otherwise include the needed filter argument in the query parameter string.

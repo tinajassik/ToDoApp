@@ -40,7 +40,9 @@ how to make the razor file to recognize "users" if I use the "behind code" *@
         <div class="button-row">
             @if (!string.IsNullOrEmpty(msg))
             {
-                <label style="color: red">@msg</label>
+                @* <label style="color: red">@msg</label> *@
+                
+                <MudAlert Severity="Severity.Warning">@msg</MudAlert>
             }
             <button @onclick="Create" class="acceptbtn">Create</button>
         </div>

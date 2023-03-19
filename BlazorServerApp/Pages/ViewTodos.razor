@@ -1,6 +1,8 @@
 ﻿@page "/ViewTodos"
 @using Domain.Models
 @using HttpClients.ClientInterfaces
+@using UIComponents
+@using Domain.DTOs
 @inject ITodoService todoService
 
 <h3 style="text-align: center">Todos</h3>
@@ -37,7 +39,7 @@
 </div>
 
 <div>
-    <button @onclick="LoadTodos">Load</button>
+    <MudButton Variant="Variant.Text" Color="Color.Primary" @onclick="LoadTodos">Load Todos</MudButton>
 </div>
 
 @if (todos == null)
@@ -49,28 +51,46 @@ else if (!todos.Any())
 }
 else
 {
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Todo ID</th>
-            <th>Owner Username</th>
-            <th>Title</th>
-            <th>Completed?</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach (var item in todos)
-        {
-            <tr>
-                <td>@item.Id</td>
-                <td>@item.Owner.UserName</td>
-                <td>@item.Title</td>
-                <td>@item.IsCompleted</td>
-            </tr>
-        }
-        </tbody>
-    </table>
+    @* <table class="table"> *@
+    @*     <thead> *@
+    @*     <tr> *@
+    @*         <th>Todo ID</th> *@
+    @*         <th>Owner Username</th> *@
+    @*         <th>Title</th> *@
+    @*         <th>Completed?</th> *@
+    @*     </tr> *@
+    @*     </thead> *@
+    @*     <tbody> *@
+    @*     @foreach (var item in todos) *@
+    @*     { *@
+    @*         <tr> *@
+    @*             <td>@item.Id</td> *@
+    @*             <td>@item.Owner.UserName</td> *@
+    @*             <td>@item.Title</td> *@
+    @*             <td>@item.IsCompleted</td> *@
+    @*         </tr> *@
+    @*     } *@
+    @*     </tbody> *@
+    @* </table> *@
+    
+    <MudTable Items="@todos" Hover="true" Breakpoint="Breakpoint.Sm">
+        <HeaderContent>
+            <MudTh>Todo Id</MudTh>
+            <MudTh>Owner Username</MudTh>
+            <MudTh>Todo Title</MudTh>
+            <MudTh>Is Completed?</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="OwnderId">@context.Owner.Id</MudTd>
+            <MudTd DataLabel="UserName">@context.Owner.UserName</MudTd>
+            <MudTd DataLabel="Title">@context.Title</MudTd>
+            <MudTd DataLabel="Status">
+                <FancyCheckBox IsCompleted="@context.IsCompleted" OnChange="@((status) => CompleteTodo(context, status))"/>
+            </MudTd>
+        </RowTemplate>
+    </MudTable>
 }
+
 @if (!string.IsNullOrEmpty(msg))
 {
     <label style="color: red">@msg</label>
@@ -98,6 +118,24 @@ else
                 completedFilterValue = bool.Parse(completedStatusFilter);
             }
             todos = await todoService.GetAsync(usernameFilter , userIdFilter, completedFilterValue,titleContainsFilter);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            msg = e.Message;
+        }
+    }
+    
+    private async Task CompleteTodo(Todo item, bool status)
+    {
+        TodoUpdateDTO dto = new(item.Id)
+        {
+            IsCompleted = status
+        };
+    
+        try
+        {
+            await todoService.UpdateAsync(dto);
         }
         catch (Exception e)
         {

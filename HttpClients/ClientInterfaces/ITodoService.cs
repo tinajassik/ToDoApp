@@ -12,4 +12,6 @@ public interface ITodoService
         bool? completedStatus, 
         string? titleContains
     );
+
+    Task UpdateAsync(TodoUpdateDTO dto);
 }
