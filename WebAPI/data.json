@@ -73,15 +73,6 @@
       "IsCompleted": false
     },
     {
-      "Id": 7,
-      "Owner": {
-        "Id": 3,
-        "UserName": "papp"
-      },
-      "Title": "task43",
-      "IsCompleted": false
-    },
-    {
       "Id": 8,
       "Owner": {
         "Id": 3,
@@ -151,6 +142,15 @@
         "UserName": "papp"
       },
       "Title": "task4",
+      "IsCompleted": false
+    },
+    {
+      "Id": 7,
+      "Owner": {
+        "Id": 7,
+        "UserName": "kevin"
+      },
+      "Title": "test edit 1",
       "IsCompleted": false
     }
   ]

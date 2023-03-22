@@ -66,6 +66,26 @@ public class TodoHttpClient : ITodoService
         }
     }
 
+    public async Task<TodoBasicDTO> GetByIdAsync(int id)
+    {
+        HttpResponseMessage responseMessage = await client.GetAsync($"/todos/{id}");
+        string content = await responseMessage.Content.ReadAsStringAsync();
+
+        if (!responseMessage.IsSuccessStatusCode)
+        {
+            throw new Exception(content);
+        }
+
+        TodoBasicDTO todo = JsonSerializer.Deserialize<TodoBasicDTO>(content,
+            new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            })!;
+        
+        return todo; 
+    }
+    
+
 
     // checks each filter argument
     // checks if null --> in which case they should be ignored.

@@ -4,6 +4,7 @@
 @using UIComponents
 @using Domain.DTOs
 @inject ITodoService todoService
+@inject NavigationManager navMgr
 
 <h3 style="text-align: center">Todos</h3>
 
@@ -75,10 +76,11 @@ else
     
     <MudTable Items="@todos" Hover="true" Breakpoint="Breakpoint.Sm">
         <HeaderContent>
-            <MudTh>Todo Id</MudTh>
+            <MudTh>Owner Id</MudTh>
             <MudTh>Owner Username</MudTh>
             <MudTh>Todo Title</MudTh>
             <MudTh>Is Completed?</MudTh>
+            <MudTh>Edit</MudTh>
         </HeaderContent>
         <RowTemplate>
             <MudTd DataLabel="OwnderId">@context.Owner.Id</MudTd>
@@ -86,6 +88,9 @@ else
             <MudTd DataLabel="Title">@context.Title</MudTd>
             <MudTd DataLabel="Status">
                 <FancyCheckBox IsCompleted="@context.IsCompleted" OnChange="@((status) => CompleteTodo(context, status))"/>
+            </MudTd>
+            <MudTd DataLabel="Edit">
+                <img src="icons/edit.gif" class="funnel" @onclick="@(() => navMgr.NavigateTo($"/EditTodo/{context.Id}"))"/>
             </MudTd>
         </RowTemplate>
     </MudTable>

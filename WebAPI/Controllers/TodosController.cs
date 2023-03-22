@@ -83,11 +83,11 @@ public class TodosController : ControllerBase
     }
     
     [HttpGet("{id:int}")]
-    public async Task<ActionResult<Todo>> GetById([FromRoute] int id)
+    public async Task<ActionResult<TodoBasicDTO>> GetById([FromRoute] int id)
     {
         try
         {
-            Todo result = await todoLogic.GetByIdAsync(id);
+            TodoBasicDTO result = await todoLogic.GetByIdAsync(id);
             return Ok(result);
         }
         catch (Exception e)

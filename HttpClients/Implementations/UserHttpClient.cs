@@ -54,7 +54,7 @@ public class UserHttpClient : IUserService
         {
             PropertyNameCaseInsensitive = true
         })!;
-
+        
         return users;
 
     }
