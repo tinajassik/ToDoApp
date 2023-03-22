@@ -17,6 +17,3 @@ As a User I can delete a Todo, so that I can clean up
 
 
 
-Version 1 - Logic classes and Web API 
-Version 2 (branch 02_ClientSetup) - Blazor Project set up + Create User Page
-
