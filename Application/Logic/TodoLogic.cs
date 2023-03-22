@@ -85,7 +85,7 @@ public class TodoLogic : ITodoLogic
         
     }
 
-    public async Task<Todo> GetByIdAsync(int id)
+    public async Task<TodoBasicDTO> GetByIdAsync(int id)
     {
         Todo? todo = await todoDao.GetByIdAsync(id);
         if (todo == null)
@@ -93,7 +93,7 @@ public class TodoLogic : ITodoLogic
             throw new TodoDoesNotExist(id);
         }
 
-        return todo;
+        return new TodoBasicDTO(todo.Id, todo.Owner.UserName, todo.Title, todo.IsCompleted);
     }
 
     private void ValidateTodo(TodoCreationDto dto)
