@@ -12,6 +12,11 @@
     cursor: pointer;
 }
 
+.icon {
+    width:60px;
+    height: 60px;
+}
+
 .filter {
     border: 1px solid #ccc;
     border-radius: 5px;
