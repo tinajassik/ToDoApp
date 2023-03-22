@@ -84,7 +84,18 @@ public class TodoHttpClient : ITodoService
         
         return todo; 
     }
-    
+
+    public async Task DeleteAsync(int id)
+    {
+        HttpResponseMessage responseMessage = await client.DeleteAsync($"Todos/{id}");
+        string content = await responseMessage.Content.ReadAsStringAsync();
+
+        if (!responseMessage.IsSuccessStatusCode)
+        {
+            throw new Exception(content);
+        }
+        
+    }
 
 
     // checks each filter argument

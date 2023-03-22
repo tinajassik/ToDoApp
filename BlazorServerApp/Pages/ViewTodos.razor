@@ -52,28 +52,6 @@ else if (!todos.Any())
 }
 else
 {
-    @* <table class="table"> *@
-    @*     <thead> *@
-    @*     <tr> *@
-    @*         <th>Todo ID</th> *@
-    @*         <th>Owner Username</th> *@
-    @*         <th>Title</th> *@
-    @*         <th>Completed?</th> *@
-    @*     </tr> *@
-    @*     </thead> *@
-    @*     <tbody> *@
-    @*     @foreach (var item in todos) *@
-    @*     { *@
-    @*         <tr> *@
-    @*             <td>@item.Id</td> *@
-    @*             <td>@item.Owner.UserName</td> *@
-    @*             <td>@item.Title</td> *@
-    @*             <td>@item.IsCompleted</td> *@
-    @*         </tr> *@
-    @*     } *@
-    @*     </tbody> *@
-    @* </table> *@
-    
     <MudTable Items="@todos" Hover="true" Breakpoint="Breakpoint.Sm">
         <HeaderContent>
             <MudTh>Owner Id</MudTh>
@@ -81,6 +59,7 @@ else
             <MudTh>Todo Title</MudTh>
             <MudTh>Is Completed?</MudTh>
             <MudTh>Edit</MudTh>
+            <MudTh>Delete?</MudTh>
         </HeaderContent>
         <RowTemplate>
             <MudTd DataLabel="OwnderId">@context.Owner.Id</MudTd>
@@ -91,6 +70,9 @@ else
             </MudTd>
             <MudTd DataLabel="Edit">
                 <img src="icons/edit.gif" class="funnel" @onclick="@(() => navMgr.NavigateTo($"/EditTodo/{context.Id}"))"/>
+            </MudTd>
+            <MudTd>
+                <img src = "icons/delete.gif" class="icon" @onclick="@(() => RemoveTodo(context.Id) )"/>
             </MudTd>
         </RowTemplate>
     </MudTable>
@@ -148,6 +130,26 @@ else
             msg = e.Message;
         }
     }
+    
+    private async Task RemoveTodo(int todoId)
+    {
+        msg = "";
+        try
+        {
+            await todoService.DeleteAsync(todoId);
+        
+            var list = new List<Todo>(todos!);
+            list.RemoveAll(todo => todo.Id == todoId);
+            todos = list.AsEnumerable();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            msg = e.Message;
+        }
+    }
+    
+    
     
     
     

@@ -51,6 +51,10 @@
     {
       "Id": 13,
       "UserName": "pappUser"
+    },
+    {
+      "Id": 14,
+      "UserName": "aleksandraAdamc"
     }
   ],
   "Todos": [
@@ -109,15 +113,6 @@
       "IsCompleted": false
     },
     {
-      "Id": 11,
-      "Owner": {
-        "Id": 5,
-        "UserName": "gabika"
-      },
-      "Title": "gabika\u0027s task",
-      "IsCompleted": true
-    },
-    {
       "Id": 12,
       "Owner": {
         "Id": 5,
@@ -125,15 +120,6 @@
       },
       "Title": "New Task Blazor Test",
       "IsCompleted": false
-    },
-    {
-      "Id": 5,
-      "Owner": {
-        "Id": 1,
-        "UserName": "haloBro"
-      },
-      "Title": "task4",
-      "IsCompleted": true
     },
     {
       "Id": 6,
