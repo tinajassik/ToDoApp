@@ -113,7 +113,7 @@ public class TodoHttpClient : ITodoService
         if (userId != null)
         {
             query += string.IsNullOrEmpty(query) ? "?" : "&";
-            query += $"userid={userId}";
+            query += $"ownerid={userId}";
         }
 
         if (completedStatus != null)

@@ -1,5 +1,6 @@
 ﻿@page "/CreateTodo"
 @using HttpClients.ClientInterfaces
+@using UIComponents
 @using Domain.Models
 @using Domain.DTOs
 @inject IUserService userService
@@ -49,13 +50,25 @@ how to make the razor file to recognize "users" if I use the "behind code" *@
     }
 </div>
 
+<Modal ShowModal="showModal">
+    <p>New todo Item successfully created!</p>
+    <button class="acceptbtn" @onclick="@Proceed">Wonderful</button>
+</Modal>
+
 @code {
     private IEnumerable<User>? users;
     private int? selectedUserId;
     private string todoTitle = "";
 
     private string msg = "";
+    private bool showModal; 
 
+    private void Proceed()
+    {
+        showModal = false;
+        navMgr.NavigateTo("/ViewTodos");
+    }
+    
     protected override async Task OnInitializedAsync()
     {
         msg = "";
@@ -88,7 +101,7 @@ how to make the razor file to recognize "users" if I use the "behind code" *@
         {
             TodoCreationDto dto = new((int)selectedUserId, todoTitle);
             await todoService.CreateAsync(dto);
-            navMgr.NavigateTo("/");
+            showModal = true;
         }
         catch (Exception e)
         {

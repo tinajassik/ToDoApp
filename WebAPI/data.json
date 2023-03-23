@@ -55,16 +55,60 @@
     {
       "Id": 14,
       "UserName": "aleksandraAdamc"
+    },
+    {
+      "Id": 15,
+      "UserName": "kokok"
+    },
+    {
+      "Id": 16,
+      "UserName": "andreea"
     }
   ],
   "Todos": [
     {
-      "Id": 3,
+      "Id": 12,
       "Owner": {
-        "Id": 1,
-        "UserName": "haloBro"
+        "Id": 5,
+        "UserName": "gabika"
       },
-      "Title": "task2",
+      "Title": "Test Pop Up ",
+      "IsCompleted": false
+    },
+    {
+      "Id": 6,
+      "Owner": {
+        "Id": 3,
+        "UserName": "papp"
+      },
+      "Title": "task105",
+      "IsCompleted": false
+    },
+    {
+      "Id": 7,
+      "Owner": {
+        "Id": 7,
+        "UserName": "kevin"
+      },
+      "Title": "test edit ",
+      "IsCompleted": false
+    },
+    {
+      "Id": 13,
+      "Owner": {
+        "Id": 2,
+        "UserName": "tina"
+      },
+      "Title": "test pop",
+      "IsCompleted": false
+    },
+    {
+      "Id": 16,
+      "Owner": {
+        "Id": 2,
+        "UserName": "tina"
+      },
+      "Title": "do yur laundry",
       "IsCompleted": false
     },
     {
@@ -73,16 +117,25 @@
         "Id": 1,
         "UserName": "haloBro"
       },
-      "Title": "task3",
+      "Title": "watch netflix:) ",
       "IsCompleted": false
     },
     {
-      "Id": 8,
+      "Id": 17,
       "Owner": {
-        "Id": 3,
-        "UserName": "papp"
+        "Id": 7,
+        "UserName": "kevin"
       },
-      "Title": "task433",
+      "Title": "cook pasta bro",
+      "IsCompleted": true
+    },
+    {
+      "Id": 2,
+      "Owner": {
+        "Id": 7,
+        "UserName": "kevin"
+      },
+      "Title": "edit now with P",
       "IsCompleted": false
     },
     {
@@ -92,7 +145,7 @@
         "UserName": "tina"
       },
       "Title": "task",
-      "IsCompleted": false
+      "IsCompleted": true
     },
     {
       "Id": 10,
@@ -101,43 +154,16 @@
         "UserName": "tina"
       },
       "Title": "task",
-      "IsCompleted": false
+      "IsCompleted": true
     },
     {
-      "Id": 2,
+      "Id": 15,
       "Owner": {
-        "Id": 1,
-        "UserName": "haloBro"
+        "Id": 11,
+        "UserName": "halo1"
       },
-      "Title": "task1",
-      "IsCompleted": false
-    },
-    {
-      "Id": 12,
-      "Owner": {
-        "Id": 5,
-        "UserName": "gabika"
-      },
-      "Title": "New Task Blazor Test",
-      "IsCompleted": false
-    },
-    {
-      "Id": 6,
-      "Owner": {
-        "Id": 3,
-        "UserName": "papp"
-      },
-      "Title": "task4",
-      "IsCompleted": false
-    },
-    {
-      "Id": 7,
-      "Owner": {
-        "Id": 7,
-        "UserName": "kevin"
-      },
-      "Title": "test edit 1",
-      "IsCompleted": false
+      "Title": "nananan",
+      "IsCompleted": true
     }
   ]
 }

@@ -69,13 +69,22 @@ else
                 <FancyCheckBox IsCompleted="@context.IsCompleted" OnChange="@((status) => CompleteTodo(context, status))"/>
             </MudTd>
             <MudTd DataLabel="Edit">
-                <img src="icons/edit.gif" class="funnel" @onclick="@(() => navMgr.NavigateTo($"/EditTodo/{context.Id}"))"/>
+                @* @onclick="@(() => navMgr.NavigateTo($"/EditTodo/{context.Id}"))" *@
+                @* @onclick="@(() => OpenUpdateTodo(context.Id))" *@
+                <img src="icons/edit.gif" class="funnel"   @onclick="@(() => LoadPopUp(context.Id))"  />
             </MudTd>
             <MudTd>
                 <img src = "icons/delete.gif" class="icon" @onclick="@(() => RemoveTodo(context.Id) )"/>
             </MudTd>
         </RowTemplate>
     </MudTable>
+    
+    <Modal ShowModal="showModal" >
+        <EditTodoComponent Id = "id" OnChange=@(async ()=> { showModal = false; await LoadTodos();})>
+            
+        </EditTodoComponent>
+    </Modal>
+    
 }
 
 @if (!string.IsNullOrEmpty(msg))
@@ -84,15 +93,26 @@ else
 }
 
 @code {
-    
+    private int id;
+    private bool showModal;
     private IEnumerable<Todo>? todos;
+    private TodoUpdateDTO dto; 
     private string msg = "";
     private bool doShowFilters = false;
 
     private string? usernameFilter;
     private int? userIdFilter;
     private string? completedStatusFilter;
-    private string? titleContainsFilter; 
+    private string? titleContainsFilter;
+
+    [Inject]
+    private IDialogService DialogService { get; set; }
+
+    private void LoadPopUp(int id)
+    {
+        this.id = id;
+        showModal = true;
+    }
 
     private async Task LoadTodos()
     {
@@ -136,11 +156,23 @@ else
         msg = "";
         try
         {
-            await todoService.DeleteAsync(todoId);
+            
+            bool? result = await DialogService.ShowMessageBox(
+                "Warning", 
+                "Deleting can not be undone!", 
+                yesText:"Delete!", cancelText:"Cancel");
+
+            if (result is true)
+            {
+                await todoService.DeleteAsync(todoId);
         
-            var list = new List<Todo>(todos!);
-            list.RemoveAll(todo => todo.Id == todoId);
-            todos = list.AsEnumerable();
+                var list = new List<Todo>(todos!);
+                list.RemoveAll(todo => todo.Id == todoId);
+                todos = list.AsEnumerable();
+            }
+            
+
+
         }
         catch (Exception e)
         {
